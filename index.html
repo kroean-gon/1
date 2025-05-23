@@ -1,14 +1,57 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>식단 챌린지 뽑기</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="main.js"></script>
-  </body>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>식단 챌린지 뽑기</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: sans-serif; padding: 2rem; text-align: center; }
+    input { padding: 0.5rem; width: 200px; }
+    button { padding: 0.5rem 1rem; margin-left: 0.5rem; }
+    #result { margin-top: 2rem; font-size: 1.2rem; color: #333; }
+  </style>
+</head>
+<body>
+  <h1>🎲 오늘의 식단 챌린지 뽑기</h1>
+  <input type="text" id="nameInput" placeholder="이름을 입력하세요" />
+  <button onclick="pickChallenge()">챌린지 뽑기!</button>
+  <div id="result"></div>
+
+  <script>
+    const challenges = [
+      "하루 3번 단백질 20g 이상 챙기기",
+      "정제 탄수화물 NO DAY!",
+      "2L 물 마시기 챌린지",
+      "18시 이후 단 음식 금지",
+      "채소 5가지 이상 섭취",
+      "나트륨 줄이기 DAY (국물 안 마시기!)",
+      "하루 한 끼는 ‘손수 요리’ 도전",
+      "단백질 쉐이크로 아침 대체",
+      "밀가루 음식 피하기",
+      "과일은 하루 1회만",
+      "야식 NO DAY!",
+      "하루 1잔 커피 이하로 줄이기",
+      "즉석식품 없는 하루",
+      "하루 10분 요리하기",
+      "정해진 시간에만 식사하기",
+      "식사 전 물 1컵 마시기",
+      "1일 채소 500g 도전",
+      "하루 1번 건강한 레시피 시도하기",
+      "가공식품 없이 1일 버티기",
+      "칼로리보다 영양소 우선하기"
+    ];
+
+    function pickChallenge() {
+      const name = document.getElementById('nameInput').value.trim();
+      if (!name) {
+        alert("이름을 입력해주세요!");
+        return;
+      }
+      const challenge = challenges[Math.floor(Math.random() * challenges.length)];
+      document.getElementById('result').textContent = `${name}님의 오늘의 챌린지는:
+${challenge}`;
+    }
+  </script>
+</body>
 </html>
